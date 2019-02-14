@@ -2,3 +2,17 @@
 *.cf
 *.vcd
 .DS_Store
+*.mti
+*.mpf
+*.qpf
+*.qsf
+*.rpt
+db/
+incremental_db/
+output_files/
+simulation/
+*.bak
+*.wlf
+transcript
+work/
+
