@@ -14,7 +14,7 @@ end sumador_nbits;
 architecture sumador of sumador_nbits is
   signal c : std_logic_vector(n downto 0);
 begin
-  process(a, b, cin)
+  process(a, b, c, cin)
   begin
     c(0) <= cin;
     for i in 0 to n - 1 loop
@@ -22,4 +22,5 @@ begin
       c(i + 1) <= (a(i) and b(i)) or (a(i) and c(i)) or (c(i) and b(i));
     end loop;
   end process;
+  cout <= c(n);
 end sumador;
