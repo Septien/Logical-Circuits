@@ -15,4 +15,5 @@ simulation/
 *.wlf
 transcript
 work/
-
+Quartus/
+*.qws
