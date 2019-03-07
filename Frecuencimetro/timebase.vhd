@@ -16,7 +16,7 @@ end TimeBase;
 architecture simple of TimeBase is
 signal Qn, Qp, aux : unsigned(n - 1 downto 0);
 begin
-	aux <= to_unsigned(5, n);
+	aux <= to_unsigned(49999999, n);
 	combinational : process(sct, Qp)
 	begin
 		if (Qp = aux) then
