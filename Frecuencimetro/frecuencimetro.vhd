@@ -11,6 +11,7 @@ end Frecuencimetro;
 
 architecture freq of Frecuencimetro is
 signal sct, eoc, h, cc, l : std_logic;
+signal Fxout : std_logic;
 signal mb, cb, db, ub : std_logic_vector(3 downto 0);
 signal ms, cs, ds, us : std_logic_vector(6 downto 0);
 
@@ -28,6 +29,14 @@ component FSM is
 	eoc : in std_logic;
 	h, c, l, stc : out std_logic
 	);
+end component;
+
+component Hab is
+  port(
+  H : in std_logic;
+  Fxin : in std_logic;
+  Fxout : out std_logic
+  );
 end component;
 
 component PulseCounter is
@@ -56,7 +65,8 @@ end component;
 begin
 	TB : TimeBase port map(clk, rst, sct, eoc);
 	Control : FSM port map(clk, rst, eoc, h, cc, l, sct);
-	PulseC : PulseCounter port map(Fx, cc, h, mb, cb, db, ub);
+	HabC : Hab port map(h, Fx, Fxout);
+	PulseC : PulseCounter port map(clk, cc, Fxout, mb, cb, db, ub);
 	ConvM : BCD2_7SEG port map(mb, ms);
 	ConvC : BCD2_7SEG port map(cb, cs);
 	ConvD : BCD2_7SEG port map(db, ds);
