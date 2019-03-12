@@ -31,6 +31,14 @@ component FSM is
 	);
 end component;
 
+component EdgeDet is
+  port(
+  clk, rst  : in std_logic;
+  Fx        : in std_logic;
+  pulse     : out std_logic
+);
+end component;
+
 component Hab is
   port(
   H : in std_logic;
@@ -65,8 +73,8 @@ end component;
 begin
 	TB : TimeBase port map(clk, rst, sct, eoc);
 	Control : FSM port map(clk, rst, eoc, h, cc, l, sct);
-	HabC : Hab port map(h, Fx, Fxout);
-	PulseC : PulseCounter port map(clk, cc, Fxout, mb, cb, db, ub);
+	ED : EdgeDet port map(clk, rst, Fx, h);
+	PulseC : PulseCounter port map(clk, cc, h, mb, cb, db, ub);
 	ConvM : BCD2_7SEG port map(mb, ms);
 	ConvC : BCD2_7SEG port map(cb, cs);
 	ConvD : BCD2_7SEG port map(db, ds);

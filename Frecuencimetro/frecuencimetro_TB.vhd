@@ -30,7 +30,7 @@ begin
   Freq : Frecuencimetro port map(clk, rst, Fx, M, C, D, U);
   --TBFx : TestTB port map(clk, rst, H, Fx);
   
-  Fx <= not FX after 1 ms;
+  Fx <= not FX after 100 ns;
   clk <= not clk after 20 ns;
   rst <= '0', '1' after 20 ns;
   H <= '0', '1' after 20 ns;
