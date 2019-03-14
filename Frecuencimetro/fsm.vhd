@@ -18,7 +18,7 @@ begin
 		case Qp is
 			when S0 =>
 			h <= '0';
-			c <= '1';
+			c <= '0';
 			l <= '0';
 			stc <= '1';
 			Qn <= S1;
