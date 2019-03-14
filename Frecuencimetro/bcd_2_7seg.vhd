@@ -23,7 +23,7 @@ begin
 			when "0111" => seg7 <= "0001111";
 			when "1000" => seg7 <= "0000000";
 			when "1001" => seg7 <= "0001100";
-			when others => seg7 <= "-------";
+			when others => seg7 <= "0000001";
 		end case;
 	end process;
 end conv;
