@@ -16,11 +16,11 @@ end TimeBase;
 architecture time of TimeBase is
   signal Qn, Qp, aux : unsigned(n - 1 downto 0);
 begin
-  aux <= (others => '0');   -- 1 ms 
+  aux <= (others => '0');    
   combinational : process(Qp)
   begin
     if (Qp = aux) then
-      Qn <= to_unsigned(49999, n);
+      Qn <= to_unsigned(49999, n); -- 1 ms
       c <= '1';
     else
       Qn <= Qp - 1;
