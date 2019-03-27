@@ -35,6 +35,6 @@ begin
     when "1001" =>
       kTime <= std_logic_vector(to_unsigned(44999, 16));   -- 90%
     when others =>
-      kTime <= std_logic_vector(to_unsigned(49999, 16));   -- 100%
+      kTime <= std_logic_vector(to_unsigned(49998, 16));   -- 100%
     end case;
   end process muxp;end mux;
